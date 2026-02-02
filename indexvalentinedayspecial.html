@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Surprise 💖</title>
+
+<style>
+    #noBtn{
+  position: absolute;
+}
+body{
+  margin:0;
+  height:100vh;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  font-family:'Comic Sans MS', cursive;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:rgb(36, 33, 33);
+}
+
+.card{
+  background:rgba(255,255,255,0.25);
+  width:90%;
+  max-width:450px;
+  max-height: 90vh
+  overflow-y: auto;
+  padding:30px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+.floating{
+  position:absolute;
+  bottom:-40px;
+  font-size:26px;
+  animation: floatUp linear infinite;
+  opacity:0.9;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  0%{
+    transform: translateY(0) scale(0.8);
+    opacity:1;
+  }
+  100%{
+    transform: translateY(-120vh) scale(1.3);
+    opacity:0;
+  }
+}
+
+.popup{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box{
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+  width: 260px;
+  animation: pop 0.3s ease;
+}
+
+.popup-box img{
+  width: 150px;
+}
+
+.popup-box p{
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.popup-box button{
+  background: #ff5c8d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+@keyframes pop{
+  from{transform: scale(0.7);}
+  to{transform: scale(1);}
+}
+
+.slide{ display:none; }
+.slide.active{ display:block; }
+
+img{
+  width:220px;
+  border-radius:20px;
+  margin:15px 0;
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  font-size:1em;
+  cursor:pointer;
+  margin:8px;
+}
+
+.next{ background:#ff4d6d; color:white; }
+.prev{ background:white; color:#ff4d6d; }
+
+#noBtn{
+  position:absolute;
+  background:white;
+  color:#ff4d6d;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="valentine.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+<!-- Slide 1 -->
+<div class="slide active">
+  <h1>Hey You ❤️</h1>
+  <p>I made something special for you 🥺✨</p>
+  <img src="https://media4.giphy.com/media/oyGTQIb6QABscZMmbR/giphy.gif">
+  <br>
+  <button onclick="startLove(); nextSlide()">Tap to Start 💖🎶</button>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+  <h1>Little Prep 💌</h1>
+  <p>
+    I dressed up my courage,<br>
+    packed my feelings nicely 🎀<br>
+    and practiced saying this a hundred times 😳
+  </p>
+  <img src="https://media0.giphy.com/media/gjHkRHSuHqu99y9Yjt/giphy.gif">
+  <br>
+  <button class="prev" onclick="prevSlide()">⬅️ Back</button>
+  <button class="next" onclick="nextSlide()">Next ➝</button>
+</div>
+
+<!-- Slide 3 : MORE GIFTS -->
+<div class="slide">
+  <h1>Gifts for You 🎁</h1>
+  <p>
+    🧸 A teddy to hug when I’m not there <br>
+    🍫 Chocolates for your sweet cravings <br>
+    💍 A promise ring (in my heart for now 😉) <br>
+    ☕ Endless coffee & chai dates together <br>
+    🎧 A playlist filled with “us” songs <br>
+    💌 My heart — permanently yours 💖
+  </p>
+  <img src="https://media1.giphy.com/media/KPAx4jFPkTY7CUVSn9/giphy.gif">
+  <br>
+  <button class="prev" onclick="prevSlide()">⬅️ Back</button>
+  <button class="next" onclick="nextSlide()">Next ➝</button>
+</div>
+
+<!-- NEW SLIDE : CUTE QUOTES -->
+<div class="slide">
+  <h1>Why You? 💕</h1>
+  <p>
+    🌸 You make normal days special <br>
+    🌈 Your smile fixes bad moods instantly <br>
+    🫶 With you, everything feels softer <br><br>
+
+    “If I had a flower for every time I thought of you,<br>
+    I’d be walking in a garden forever.” 🌷
+  </p>
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWVraWtpbWlwem9rbGNuOTRvOHRyOGQ3YXE5ZXFmMDV1MmNrcDBzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f9EmXxglhdhAj1bo28/giphy.gif">
+  <br>
+  <button class="prev" onclick="prevSlide()">⬅️ Back</button>
+  <button class="next" onclick="nextSlide()">Next ➝</button>
+</div>
+
+<!-- Slide 5 : Proposal -->
+<div class="slide">
+  <h1>Important Question 💖</h1>
+  <p>
+    You’re my favorite thought, <br>
+    my comfort place, <br>
+    and my happiest distraction ✨
+  </p>
+  <img src="https://media4.giphy.com/media/SYo1DFS8NLhhqzzjMU/giphy.gif">
+  <h2>Will you be my Valentine? 💘</h2>
+
+  <button class="next" onclick="yesClicked()">Yes 🥰😍</button>
+  <button id="noBtn" onclick="moveNo()">No🙃 </button>
+</div>
+
+<!-- Final Slide -->
+<div class="slide">
+  <h1>YAYYYY 😭💖</h1>
+  <p>
+    You just made my heart do happy dances 🥹💃<br>
+    Thank you for choosing me 💕<br><br>
+    Happy Valentine’s Day, my favorite person 🧸💞
+  </p>
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYW43Z3NndHVrZ29scnQ0cnVrbWxsY2tsNGpjMHh5eTdua2JmNzliOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif">
+</div>
+
+<!-- Cute No Popup -->
+<div id="cutePopup" class="popup">
+  <div class="popup-box">
+    <img id="popupGif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    <p id="popupText">Ek baar aur soch lo pls 🥺💔</p>
+    <button onclick="closePopup()">Okay 😔</button>
+  </div>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+let floatInterval;
+
+function startLove(){
+  document.getElementById("bgMusic").play();
+  nextSlide();
+}
+
+function showSlide(n){
+  slides.forEach(s => s.classList.remove("active"));
+  slides[n].classList.add("active");
+}
+
+function nextSlide(){
+  if(current < slides.length-1){
+    current++;
+    showSlide(current);
+  }
+}
+
+function prevSlide(){
+  if(current > 0){
+    current--;
+    showSlide(current);
+  }
+}
+
+function yesClicked(){
+  current = slides.length-1;
+  showSlide(current);
+  startFloating(); // 🧸💖 animation starts
+}
+
+function startFloating(){
+  floatInterval = setInterval(createFloat, 400);
+}
+
+function createFloat(){
+  const float = document.createElement("div");
+  float.className = "floating";
+
+  const emojis = ["🧸","💖","💕","💗","❤️","💘"];
+  float.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+
+  float.style.left = Math.random()*100 + "vw";
+  float.style.animationDuration = (4 + Math.random()*3) + "s";
+  float.style.fontSize = (24 + Math.random()*20) + "px";
+
+  document.body.appendChild(float);
+  setTimeout(() => float.remove(), 8000);
+}
+let noCount = 0;
+
+function moveNo(){
+  const btn = document.getElementById("noBtn");
+  noCount++;
+
+  if(noCount === 1){
+    alert("Ek baar aur soch lo pls 🥺💔\nMera dil mat todo...");
+  }
+  else if(noCount === 2){
+    alert("Bas ek aur baar soch lo please 😔💖");
+  }
+  else{
+    btn.style.top = Math.random() * 80 + "%";
+    btn.style.left = Math.random() * 80 + "%";
+  }
+}
+</script>
+</body>
+</html>
